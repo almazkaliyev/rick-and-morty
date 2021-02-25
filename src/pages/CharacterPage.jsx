@@ -24,7 +24,7 @@ const CharacterPage = () => {
     return (
       <section>
         <Link className="section__link" to="/">
-          &larr; Return homepage
+          &larr; Go back
         </Link>
         <h3>There is no character...</h3>
       </section>
@@ -36,7 +36,7 @@ const CharacterPage = () => {
   return (
     <section>
       <Link className="section__link" to="/">
-        &larr; Return homepage
+        &larr; Go back
       </Link>
       {isLoading ? (
         <CircularProgress />

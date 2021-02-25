@@ -23,8 +23,8 @@ const LocationPage = () => {
   if (Object.keys(location).length === 0) {
     return (
       <section>
-        <Link className="section__link" to="/">
-          &larr; Return homepage
+        <Link className="section__link" to="/location">
+          &larr; Go back
         </Link>
         <h3>There is no location...</h3>
       </section>
@@ -35,8 +35,8 @@ const LocationPage = () => {
 
   return (
     <section>
-      <Link className="section__link" to="/">
-        &larr; Return homepage
+      <Link className="section__link" to="/location">
+        &larr; Go back
       </Link>
       {isLoading ? (
         <CircularProgress />
