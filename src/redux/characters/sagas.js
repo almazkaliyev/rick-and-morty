@@ -10,29 +10,22 @@ import {
 } from './actions';
 import * as ActionTypes from './actionTypes';
 
-function* fetchCharacters() {
+function* fetchCharacters(action) {
   try {
-    const res = yield call(Api.fetchCharacters);
-    if (res.info.next) {
-      yield put(setHasNextPage(true));
+    let res;
+    if (action.payload) {
+      res = yield call(Api.fetchCharacters, action.payload);
+      yield put(addCharacters(res.results));
     } else {
-      yield put(setHasNextPage(false));
+      res = yield call(Api.fetchCharacters);
+      yield put(setCharacters(res.results));
     }
-    yield put(setCharacters(res.results));
-  } catch (e) {
-    yield put(setErrorMessage(e.message));
-  }
-}
 
-function* fetchNextCharacters(action) {
-  try {
-    const res = yield call(Api.fetchCharacters, action.payload);
     if (res.info.next) {
       yield put(setHasNextPage(true));
     } else {
       yield put(setHasNextPage(false));
     }
-    yield put(addCharacters(res.results));
   } catch (e) {
     yield put(setErrorMessage(e.message));
   }
@@ -49,6 +42,6 @@ function* fetchSingleCharacter(action) {
 
 export default function* charactersSaga() {
   yield takeLatest(ActionTypes.FETCH_CHARACTERS, fetchCharacters);
-  yield takeLatest(ActionTypes.SET_PAGE, fetchNextCharacters);
+  yield takeLatest(ActionTypes.SET_PAGE, fetchCharacters);
   yield takeLatest(ActionTypes.FETCH_SINGLE_CHARACTER, fetchSingleCharacter);
 }
