@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Nav from './components/Nav';
 import CharacterPage from './pages/CharacterPage';
+import EpisodesPage from './pages/EpisodesPage';
 import HomePage from './pages/HomePage';
 import LocationPage from './pages/LocationPage';
 import LocationsPage from './pages/LocationsPage';
@@ -19,6 +20,7 @@ const App = () => (
         <Route component={CharacterPage} exact path="/character/:id(\d+)" />
         <Route component={LocationsPage} exact path="/location" />
         <Route component={LocationPage} exact path="/location/:id(\d+)" />
+        <Route component={EpisodesPage} exact path="/episodes" />
         <Route component={NotFoundPage} path="*" />
       </Switch>
     </main>

@@ -11,7 +11,7 @@ const Nav = () => (
         exact
         to="/"
       >
-        Characters
+        characters
       </NavLink>
     </li>
     <li className={styles.navItem}>
@@ -20,7 +20,16 @@ const Nav = () => (
         className={styles.navLink}
         to="/location"
       >
-        Locations
+        locations
+      </NavLink>
+    </li>
+    <li className={styles.navItem}>
+      <NavLink
+        activeClassName={styles.navLinkActive}
+        className={styles.navLink}
+        to="/episodes"
+      >
+        episodes
       </NavLink>
     </li>
   </ul>

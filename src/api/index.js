@@ -35,3 +35,12 @@ export const fetchLocationById = async (id) => {
     throw new Error(e);
   }
 };
+
+export const fetchEpisodes = async (page = 1) => {
+  try {
+    const { data } = await axios.get(`/episode?page=${page}`);
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+};
