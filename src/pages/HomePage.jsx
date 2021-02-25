@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import CharactersList from '../components/CharactersList';
 import CircularProgress from '../components/CircularProgress';
 import { fetchCharacters } from '../redux/characters/actions';
+import {
+  selectCharacters,
+  selectIsLoading,
+} from '../redux/characters/selectors';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.characters.isLoading);
-  const characters = useSelector((state) => state.characters.items);
+  const isLoading = useSelector(selectIsLoading);
+  const characters = useSelector(selectCharacters);
 
   React.useEffect(() => {
     dispatch(fetchCharacters());

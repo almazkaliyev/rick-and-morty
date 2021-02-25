@@ -5,12 +5,16 @@ import { Link, useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import CircularProgress from '../components/CircularProgress';
 import { fetchCharacterById } from '../redux/characters/actions';
+import {
+  selectIsLoading,
+  selectSingleCharacter,
+} from '../redux/characters/selectors';
 
 const CharacterPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.characters.isLoading);
-  const character = useSelector((state) => state.characters.selected);
+  const isLoading = useSelector(selectIsLoading);
+  const character = useSelector(selectSingleCharacter);
 
   React.useEffect(() => {
     dispatch(fetchCharacterById(id));
