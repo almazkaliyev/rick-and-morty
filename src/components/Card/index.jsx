@@ -2,23 +2,23 @@ import cx from 'classnames';
 
 import styles from './Card.module.scss';
 
-const Card = ({ horizontal = false, children }) => (
+const Card = ({ character, horizontal = false, children }) => (
   <article
     className={cx(styles.card, {
       [styles.cardHorizontal]: horizontal,
     })}
   >
     <img
-      alt="Abradolf Lincler"
+      alt={character.name}
       className={styles.cardImage}
-      src="https://rickandmortyapi.com/api/character/avatar/7.jpeg"
+      src={character.image}
     />
     <div className={styles.cardBody}>
-      <span className={styles.cardTitle}>Abradolf Lincler</span>
+      <span className={styles.cardTitle}>{character.name}</span>
       <span className={styles.cardText}>
         <ul>
-          <li>human</li>
-          <li>unknown</li>
+          <li>{character.species}</li>
+          <li>{character.status}</li>
         </ul>
         {children}
       </span>
