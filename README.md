@@ -2,8 +2,8 @@
 
 ## Installation
 
-- `$ git clone https://github.com/kaliyev-dev/bepaid-test-task.git`
-- `$ cd bepaid-test-task`
+- `$ git clone https://github.com/kaliyev-dev/rick-and-morty.git`
+- `$ cd rick-and-morty`
 - `$ yarn` init packages
 
 ## Usage
