@@ -1,4 +1,4 @@
-# Bepaid Test Task
+# Rick and Morty
 
 ## Installation
 
