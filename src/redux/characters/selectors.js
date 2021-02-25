@@ -7,3 +7,9 @@ export const selectCharacters = (state) => selectCharactersState(state).items;
 
 export const selectSingleCharacter = (state) =>
   selectCharactersState(state).selected;
+
+export const selectPageNumber = (state) =>
+  selectCharactersState(state).page.number;
+
+export const selectHasNextPage = (state) =>
+  selectCharactersState(state).page.hasNext;

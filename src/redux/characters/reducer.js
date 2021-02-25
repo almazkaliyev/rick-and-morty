@@ -5,6 +5,10 @@ import * as ActionTypes from './actionTypes';
 
 const initialState = {
   items: [],
+  page: {
+    number: 1,
+    hasNext: false,
+  },
   selected: {},
   isLoading: false,
   errorMessage: '',
@@ -33,6 +37,14 @@ const charactersReducer = produce((draft, action) => {
     case ActionTypes.SET_SELECTED_CHARACTER:
       draft.isLoading = false;
       draft.selected = action.payload;
+      break;
+
+    case ActionTypes.SET_PAGE:
+      draft.page.number = action.payload;
+      break;
+
+    case ActionTypes.SET_HAS_NEXT_PAGE:
+      draft.page.hasNext = action.payload;
       break;
 
     case ActionTypes.SET_ERROR_MESSAGE:
