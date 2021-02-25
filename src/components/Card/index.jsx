@@ -2,26 +2,16 @@ import cx from 'classnames';
 
 import styles from './Card.module.scss';
 
-const Card = ({ character, horizontal = false, children }) => (
+const Card = ({ title, image, horizontal = false, children }) => (
   <article
     className={cx(styles.card, {
       [styles.cardHorizontal]: horizontal,
     })}
   >
-    <img
-      alt={character.name}
-      className={styles.cardImage}
-      src={character.image}
-    />
+    {image && <img alt={title} className={styles.cardImage} src={image} />}
     <div className={styles.cardBody}>
-      <span className={styles.cardTitle}>{character.name}</span>
-      <span className={styles.cardText}>
-        <ul>
-          <li>{character.species}</li>
-          <li>{character.status}</li>
-        </ul>
-        {children}
-      </span>
+      <span className={styles.cardTitle}>{title}</span>
+      <span className={styles.cardText}>{children}</span>
     </div>
   </article>
 );

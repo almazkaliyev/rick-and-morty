@@ -31,6 +31,8 @@ const CharacterPage = () => {
     );
   }
 
+  const { name, image, origin, gender, location } = character;
+
   return (
     <section>
       <Link className="section__link" to="/">
@@ -39,13 +41,13 @@ const CharacterPage = () => {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <Card character={character} horizontal>
-          <div>{character.origin.name}</div>
+        <Card horizontal image={image} title={name}>
+          <div>{origin.name}</div>
           <div>
-            Gender: <span>{character.gender}</span>
+            Gender: <span>{gender}</span>
           </div>
           <div>
-            Last known location: <span>{character.location.name}</span>
+            Last known location: <span>{location.name}</span>
           </div>
         </Card>
       )}

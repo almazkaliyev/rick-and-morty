@@ -2,7 +2,7 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 
-import CharactersList from '../components/CharactersList';
+import CardList from '../components/CardList';
 import CircularProgress from '../components/CircularProgress';
 import { fetchCharacters, setPage } from '../redux/characters/actions';
 import {
@@ -34,7 +34,7 @@ const HomePage = () => {
           loader={<CircularProgress />}
           next={() => dispatch(setPage(pageNumber + 1))}
         >
-          <CharactersList items={characters} />
+          <CardList items={characters} />
         </InfiniteScroll>
       )}
     </section>
