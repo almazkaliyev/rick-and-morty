@@ -2,25 +2,25 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 
-import CharactersList from '../components/CharactersList';
 import CircularProgress from '../components/CircularProgress';
-import { fetchCharacters, setPage } from '../redux/characters/actions';
+import LocationsList from '../components/LocationsList';
+import { fetchLocations, setPage } from '../redux/locations/actions';
 import {
-  selectCharacters,
   selectHasNextPage,
   selectIsLoading,
+  selectLocations,
   selectPageNumber,
-} from '../redux/characters/selectors';
+} from '../redux/locations/selectors';
 
-const HomePage = () => {
+const LocationsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-  const characters = useSelector(selectCharacters);
+  const locations = useSelector(selectLocations);
   const pageNumber = useSelector(selectPageNumber);
   const hasMore = useSelector(selectHasNextPage);
 
   React.useEffect(() => {
-    dispatch(fetchCharacters());
+    dispatch(fetchLocations());
   }, []);
 
   return (
@@ -29,16 +29,16 @@ const HomePage = () => {
         <CircularProgress />
       ) : (
         <InfiniteScroll
-          dataLength={characters.length}
+          dataLength={locations.length}
           hasMore={hasMore}
           loader={<CircularProgress />}
           next={() => dispatch(setPage(pageNumber + 1))}
         >
-          <CharactersList items={characters} />
+          <LocationsList items={locations} />
         </InfiniteScroll>
       )}
     </section>
   );
 };
 
-export default HomePage;
+export default LocationsPage;

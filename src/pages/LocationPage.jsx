@@ -4,34 +4,34 @@ import { Link, useParams } from 'react-router-dom';
 
 import Card from '../components/Card';
 import CircularProgress from '../components/CircularProgress';
-import { fetchCharacterById } from '../redux/characters/actions';
+import { fetchLocationById } from '../redux/locations/actions';
 import {
   selectIsLoading,
-  selectSingleCharacter,
-} from '../redux/characters/selectors';
+  selectSingleLocation,
+} from '../redux/locations/selectors';
 
-const CharacterPage = () => {
+const LocationPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
-  const character = useSelector(selectSingleCharacter);
+  const location = useSelector(selectSingleLocation);
 
   React.useEffect(() => {
-    dispatch(fetchCharacterById(id));
+    dispatch(fetchLocationById(id));
   }, []);
 
-  if (Object.keys(character).length === 0) {
+  if (Object.keys(location).length === 0) {
     return (
       <section>
         <Link className="section__link" to="/">
           &larr; Return homepage
         </Link>
-        <h3>There is no character...</h3>
+        <h3>There is no location...</h3>
       </section>
     );
   }
 
-  const { name, image, species, status, origin, gender, location } = character;
+  const { name, type, dimension } = location;
 
   return (
     <section>
@@ -41,22 +41,15 @@ const CharacterPage = () => {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <Card horizontal image={image} title={name}>
+        <Card horizontal title={name}>
           <ul>
-            <li>{species}</li>
-            <li>{status}</li>
+            <li>{type}</li>
+            <li>{dimension}</li>
           </ul>
-          <div>{origin.name}</div>
-          <div>
-            Gender: <span>{gender}</span>
-          </div>
-          <div>
-            Last known location: <span>{location.name}</span>
-          </div>
         </Card>
       )}
     </section>
   );
 };
 
-export default CharacterPage;
+export default LocationPage;

@@ -17,3 +17,21 @@ export const fetchCharacterById = async (id) => {
     throw new Error(e);
   }
 };
+
+export const fetchLocations = async (page = 1) => {
+  try {
+    const { data } = await axios.get(`/location?page=${page}`);
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+};
+
+export const fetchLocationById = async (id) => {
+  try {
+    const { data } = await axios.get(`/location/${id}`);
+    return data;
+  } catch (e) {
+    throw new Error(e);
+  }
+};

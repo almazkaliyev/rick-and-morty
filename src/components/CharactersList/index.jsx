@@ -1,18 +1,17 @@
 import { Link } from 'react-router-dom';
 
 import Card from '../Card';
-import styles from './CardList.module.scss';
 
-const CardList = ({ items }) => {
+const CharactersList = ({ items }) => {
   if (!items || items.length === 0) {
-    return <h3>There is no characters...</h3>;
+    return <h3>There is nothing...</h3>;
   }
 
   return (
-    <ul className={styles.cardList}>
+    <ul className="grid-list">
       {items?.map(({ id, name, image, species, status }) => (
         <li key={id}>
-          <Link className={styles.cardListLink} to={`/character/${id}`}>
+          <Link className="grid-list__link" to={`/character/${id}`}>
             <Card image={image} title={name}>
               <ul>
                 <li>{species}</li>
@@ -26,4 +25,4 @@ const CardList = ({ items }) => {
   );
 };
 
-export default CardList;
+export default CharactersList;

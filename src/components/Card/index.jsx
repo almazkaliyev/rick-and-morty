@@ -11,7 +11,7 @@ const Card = ({ title, image, horizontal = false, children }) => (
     {image && <img alt={title} className={styles.cardImage} src={image} />}
     <div className={styles.cardBody}>
       <span className={styles.cardTitle}>{title}</span>
-      <span className={styles.cardText}>{children}</span>
+      {children && <span className={styles.cardText}>{children}</span>}
     </div>
   </article>
 );
