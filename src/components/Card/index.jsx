@@ -12,7 +12,7 @@ const Card = ({ title, subtitle, image, horizontal = false, children }) => (
     <div className={styles.cardBody}>
       <p className={styles.cardTitle}>{title}</p>
       <p className={cx('hint', styles.cardSubtitle)}>{subtitle}</p>
-      {children && <p className={styles.cardText}>{children}</p>}
+      {children && <div className={styles.cardText}>{children}</div>}
     </div>
   </article>
 );
