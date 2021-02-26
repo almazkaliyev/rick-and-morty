@@ -41,12 +41,7 @@ const LocationPage = () => {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <Card horizontal title={name}>
-          <ul>
-            <li>{type}</li>
-            <li>{dimension}</li>
-          </ul>
-        </Card>
+        <Card horizontal subtitle={`${type} ${dimension}`} title={name} />
       )}
     </section>
   );

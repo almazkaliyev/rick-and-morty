@@ -35,28 +35,21 @@
   }
 
   &Title {
-    display: block;
     font-size: 1.5rem;
     margin-bottom: 0.2em;
   }
 
+  &Subtitle {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.42);
+  }
+
   &Text {
+    margin-top: 1rem;
+
     & > * {
       margin-bottom: 0.7rem;
       &:last-child { margin-bottom: 0; }
     }
-
-    & ul {
-      & li {
-        position: relative;
-        display: inline-flex;
-        margin-right: 1rem;
-        text-transform: capitalize;
-        color: rgba(0, 0, 0, 0.42);
-        &:last-child { margin-right: 0; }
-      }
-    }
-
-    & div > span { color: rgba(0, 0, 0, 0.42); }
   }
 }

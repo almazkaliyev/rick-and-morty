@@ -1,9 +1,10 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
+import Card from '../components/Card';
 import CircularProgress from '../components/CircularProgress';
-import LocationsList from '../components/LocationsList';
 import { fetchLocations, setPage } from '../redux/locations/actions';
 import {
   selectHasNextPage,
@@ -34,7 +35,15 @@ const LocationsPage = () => {
           loader={<CircularProgress />}
           next={() => dispatch(setPage(pageNumber + 1))}
         >
-          <LocationsList items={locations} />
+          <ul className="grid-list">
+            {locations?.map(({ id, name, type, dimension }) => (
+              <li key={id}>
+                <Link className="grid-list__link" to={`/location/${id}`}>
+                  <Card subtitle={`${type} ${dimension}`} title={name} />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </InfiniteScroll>
       )}
     </section>

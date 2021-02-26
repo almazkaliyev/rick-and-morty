@@ -1,9 +1,11 @@
+/* eslint-disable camelcase */
+// TODO: normalize air_date
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useDispatch, useSelector } from 'react-redux';
 
+import Card from '../components/Card';
 import CircularProgress from '../components/CircularProgress';
-import EpisodesList from '../components/EpisodesList';
 import { fetchEpisodes, setPage } from '../redux/episodes/actions';
 import {
   selectEpisodes,
@@ -34,7 +36,13 @@ const EpisodesPage = () => {
           loader={<CircularProgress />}
           next={() => dispatch(setPage(pageNumber + 1))}
         >
-          <EpisodesList items={episodes} />
+          <ul className="grid-list">
+            {episodes?.map(({ id, name, episode, air_date }) => (
+              <li key={id}>
+                <Card subtitle={`${episode} ${air_date}`} title={name} />
+              </li>
+            ))}
+          </ul>
         </InfiniteScroll>
       )}
     </section>

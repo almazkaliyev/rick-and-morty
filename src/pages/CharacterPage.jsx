@@ -41,17 +41,18 @@ const CharacterPage = () => {
       {isLoading ? (
         <CircularProgress />
       ) : (
-        <Card horizontal image={image} title={name}>
-          <ul>
-            <li>{species}</li>
-            <li>{status}</li>
-          </ul>
+        <Card
+          horizontal
+          image={image}
+          subtitle={`${species} ${status}`}
+          title={name}
+        >
           <div>{origin.name}</div>
           <div>
-            Gender: <span>{gender}</span>
+            Gender: <span className="hint">{gender}</span>
           </div>
           <div>
-            Last known location: <span>{location.name}</span>
+            Last known location: <span className="hint">{location.name}</span>
           </div>
         </Card>
       )}
