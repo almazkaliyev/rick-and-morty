@@ -11,7 +11,9 @@ const Card = ({ title, subtitle, image, horizontal = false, children }) => (
     {image && <img alt={title} className={styles.cardImage} src={image} />}
     <div className={styles.cardBody}>
       <p className={styles.cardTitle}>{title}</p>
-      <p className={cx('hint', styles.cardSubtitle)}>{subtitle}</p>
+      {subtitle && (
+        <p className={cx('hint', styles.cardSubtitle)}>{subtitle}</p>
+      )}
       {children && <div className={styles.cardText}>{children}</div>}
     </div>
   </article>
